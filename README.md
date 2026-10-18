@@ -120,22 +120,22 @@ rm -r /tmp/QshOni
 wget https://github.com/richardschoen/MOBIQSH/raw/refs/heads/master/getrepo-qshoni.sh -O - | bash
 ```
 
-## Manually download getrepo-qshoni.sh and run it
+## Manually download getrepo-mobiqsh.sh and run it
 - Download the raw getrepo-qshoni.sh script or create it manually in your IFS. https://github.com/richardschoen/MOBIQSH/refs/heads/master/getrepo-qshoni.sh    
 - Then run the getrepo-qshoni.sh script to automatically clone the repo and auto-run the build.sh to create the QSHONI library and associated objects.   
 ```
-bash getrepo-qshoni.sh
+bash getrepo-mobiqsh.sh
 ```
-## Installing and Building QSHONI via Git clone and build.sh 
+## Installing and Building MOBIQSH via Git clone and build.sh 
 
 ***(Important to change SRCCCSID variable in build.sh to your local CCSID before running build.sh. Default=37)***
 
 ```
 # Use this install method if you want to manually run each command from a QSH/PASE/SSH shell.
-mkdir /qshoni
-cd /qshoni 
-git -c http.sslVerify=false clone --recurse-submodules https://github.com/richardschoen/QshOni.git
-cd qshoni
+mkdir /mobiqsh
+cd /mobiqsh
+git -c http.sslVerify=false clone --recurse-submodules https://github.com/richardschoen/MobiQsh.git
+cd mobiqsh
 build.sh  
 ```
 After building the QSHONI library the commands should be ready to use.
