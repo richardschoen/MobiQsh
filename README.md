@@ -1,9 +1,12 @@
 # MobiQsh - IBM i Open Source Integration for PASE and QShell
-MobiQsh is a FREE IBM i library contains useful CL wrapper commands to allow Qshell and Pase apps to be called and consumed from regular IBM i jobs via CL, RPG or COBOL programs. It also has a CL command to scan stdout for a specific value if you need to do something simple to check for a successful command run. 
+```MobiQsh``` is a FREE IBM I library that contains useful CL wrapper commands to allow Qshell and Pase apps to be called and consumed from regular IBM i jobs via CL, RPG or COBOL programs. 
 
-The main benefit of this wrapper is to be able to integrate Qshell/Pase applications on-the-fly with standard IBM i job streams.
+The main benefit of the ```MobiQsh``` wrapper is to be able to integrate Qshell/Pase applications on-the-fly with standard IBM i job streams. You can easily integrate your traditional RPG, CL and COBOL code to cloud and open source apps and services such as Amazon, Microsoft, Google, and more.
 
-It's also used as a supporting component by the MobiGoGo Connect software integration product for IBM i.  
+```MobiQsh``` is also used as a supporting component by the ```MobiGoGo Connect``` software integration product for IBM i.  
+
+If you need to integrate your IBM I to the outside world, learn more about``` MobiGoGo Connect``` here.   
+https://www.mobigogo.net
 
 There are several ways to build the library. Pick your favorite.
 
