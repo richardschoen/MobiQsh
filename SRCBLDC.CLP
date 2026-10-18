@@ -3,7 +3,7 @@
              DCL        VAR(&DESTFILE) TYPE(*CHAR) LEN(10) +
                           VALUE(SOURCE)
              DCL        VAR(&DESTLIB) TYPE(*CHAR) LEN(10) +
-                          VALUE(MOBIQSH)
+                          VALUE(QSHONI)
              DCL        VAR(&TGTRLS) TYPE(*CHAR) LEN(10) +
                           VALUE(V7R3M0)
              DCL        VAR(&VERSION) TYPE(*CHAR) LEN(30) +
@@ -22,9 +22,9 @@
              CRTSRCPF   FILE(QTEMP/TMPQRYSRC) RCDLEN(240)
              MONMSG     MSGID(CPF0000)
 
-             CRTPNLGRP PNLGRP(&DESTLIB/&DESTLIBCMDS) +
-                 SRCFILE(&DESTLIB/SOURCE) +
-                 SRCMBR(&DESTLIBCMDS) +
+             CRTPNLGRP PNLGRP(MOBIQSH/QSHONICMDS) +
+                 SRCFILE(MOBIQSH/SOURCE) +
+                 SRCMBR(QSHONICMDS) +
                  REPLACE(*NO) /* 1.0.40 */
 
              CRTCMD     CMD(&DESTLIB/QSHPATH) PGM(&DESTLIB/QSHPATHC) +
@@ -36,7 +36,7 @@
 
              CRTCMD     CMD(&DESTLIB/QSHEXEC) PGM(&DESTLIB/QSHEXECC) +
                           SRCFILE(&DESTLIB/&DESTFILE) PRDLIB(&DESTLIB) +
-                          HLPPNLGRP(&DESTLIB/&DESTLIBCMDS) +
+                          HLPPNLGRP(MOBIQSH/QSHONICMDS) +
                           HLPID(QSHEXEC) /* V1.0.40 */
 
              CRTCLPGM   PGM(&DESTLIB/QSHEXECC) +
@@ -61,7 +61,7 @@
 
              CRTCMD     CMD(&DESTLIB/QSHBASH) PGM(&DESTLIB/QSHBASHC) +
                           SRCFILE(&DESTLIB/&DESTFILE) +
-                          HLPPNLGRP(&DESTLIB/&DESTLIBCMDS) +
+                          HLPPNLGRP(MOBIQSH/QSHONICMDS) +
                           HLPID(QSHBASH) +
                           PRDLIB(&DESTLIB) /* V1.0.3-V1.0.40 */
 
@@ -256,42 +256,42 @@
                           SRCFILE(&DESTLIB/&DESTFILE) REPLACE(*NO) +
                           TGTRLS(&TGTRLS) /* 1.0.27 */
 
-             CRTRPGMOD  MODULE(&DESTLIB/&DESTLIBSRV) +
+             CRTRPGMOD  MODULE(&DESTLIB/QSHONISRV) +
                           SRCFILE(&DESTLIB/&DESTFILE) +
                           DBGVIEW(*SOURCE) /* 1.0.28 */
 
-             CRTSRVPGM  SRVPGM(&DESTLIB/&DESTLIBSRV) +
-                          MODULE(&DESTLIB/&DESTLIBSRV) +
+             CRTSRVPGM  SRVPGM(&DESTLIB/QSHONISRV) +
+                          MODULE(&DESTLIB/QSHONISRV) +
                           EXPORT(*SRCFILE) SRCFILE(&DESTLIB/SOURCE) +
-                          SRCMBR(&DESTLIBSRVD) BNDSRVPGM(*NONE) +
+                          SRCMBR(QSHONISRVD) BNDSRVPGM(*NONE) +
                           BNDDIR(*NONE) ACTGRP(*CALLER) /* 1.0.29 */
 
-             CRTBNDDIR  BNDDIR(&DESTLIB/&DESTLIBSRV) TEXT('Binding +
-                          Directory for &DESTLIBSRV Service Program') +
+             CRTBNDDIR  BNDDIR(&DESTLIB/QSHONISRV) TEXT('Binding +
+                          Directory for QSHONISRV Service Program') +
                           /* 1.0.28 */
 
-             ADDBNDDIRE BNDDIR(&DESTLIB/&DESTLIBSRV) +
-                          OBJ((&DESTLIB/&DESTLIBSRV *SRVPGM *IMMED)) +
+             ADDBNDDIRE BNDDIR(&DESTLIB/QSHONISRV) +
+                          OBJ((&DESTLIB/QSHONISRV *SRVPGM *IMMED)) +
                           POSITION(*LAST) /* 1.0.28 */
 
-             CRTBNDRPG  PGM(&DESTLIB/&DESTLIBPR01) +
+             CRTBNDRPG  PGM(&DESTLIB/QSHONIPR01) +
                           SRCFILE(&DESTLIB/&DESTFILE) +
-                          SRCMBR(&DESTLIBPR01) DFTACTGRP(*NO) +
+                          SRCMBR(QSHONIPR01) DFTACTGRP(*NO) +
                           REPLACE(*NO) TGTRLS(&TGTRLS) /* 1.0.28 */
 
-             CRTBNDRPG  PGM(&DESTLIB/&DESTLIBPR02) +
+             CRTBNDRPG  PGM(&DESTLIB/QSHONIPR02) +
                           SRCFILE(&DESTLIB/&DESTFILE) +
-                          SRCMBR(&DESTLIBPR02) DFTACTGRP(*NO) +
+                          SRCMBR(QSHONIPR02) DFTACTGRP(*NO) +
                           REPLACE(*NO) TGTRLS(&TGTRLS) /* 1.0.28 */
 
-             CRTBNDRPG  PGM(&DESTLIB/&DESTLIBPR03) +
+             CRTBNDRPG  PGM(&DESTLIB/QSHONIPR03) +
                           SRCFILE(&DESTLIB/&DESTFILE) +
-                          SRCMBR(&DESTLIBPR03) DFTACTGRP(*NO) +
+                          SRCMBR(QSHONIPR03) DFTACTGRP(*NO) +
                           REPLACE(*NO) TGTRLS(&TGTRLS) /* 1.0.29 */
 
-             CRTBNDRPG  PGM(&DESTLIB/&DESTLIBPR04) +
+             CRTBNDRPG  PGM(&DESTLIB/QSHONIPR04) +
                           SRCFILE(&DESTLIB/&DESTFILE) +
-                          SRCMBR(&DESTLIBPR04) DFTACTGRP(*NO) +
+                          SRCMBR(QSHONIPR04) DFTACTGRP(*NO) +
                           REPLACE(*NO) TGTRLS(&TGTRLS) /* 1.0.47 */
 
              CRTCMD     CMD(&DESTLIB/QSHIFSSIZ) +
@@ -595,31 +595,31 @@
              CHGDTAARA  DTAARA(&DESTLIB/VERSION *ALL) VALUE(&VERSION)
 
  /* Create and set data area for Python binary location - 1.05 */
-             CRTDTAARA  DTAARA(&DESTLIB/PYPATH) TYPE(*CHAR) LEN(255) +
+             CRTDTAARA  DTAARA(MOBIQSH/PYPATH) TYPE(*CHAR) LEN(255) +
                           VALUE('/QOpenSys/pkgs/bin') TEXT('Path to +
                           Python Binaries')
 
  /* Create and set data area for Python binary location - 1.0.25 */
              CHGVAR     VAR(&QSHPYTHON) VALUE('/qshpython')
-             CRTDTAARA  DTAARA(&DESTLIB/QSHPYTHON) TYPE(*CHAR) +
+             CRTDTAARA  DTAARA(MOBIQSH/QSHPYTHON) TYPE(*CHAR) +
                           LEN(255) VALUE(&QSHPYTHON) TEXT('Path to +
-                          &DESTLIB Python Scripts')
+                          QSHONI Python Scripts')
 
 /* Attempt to create python script directory - V1.0.25 */
              MKDIR      DIR(&QSHPYTHON) DTAAUT(*RWX) OBJAUT(*ALL)
              MONMSG     MSGID(CPF0000)
 
  /* Create and set data area for PHP binary location - 1.0.24 */
-             CRTDTAARA  DTAARA(&DESTLIB/PHPPATH) TYPE(*CHAR) LEN(255) +
+             CRTDTAARA  DTAARA(MOBIQSH/PHPPATH) TYPE(*CHAR) LEN(255) +
                           VALUE(' ') TEXT('Path to PHP Binaries')
 
  /* Create and set data area for open source path loc - 1.0.9 */
-             CRTDTAARA  DTAARA(&DESTLIB/QSHPATHLOC) TYPE(*CHAR) +
+             CRTDTAARA  DTAARA(MOBIQSH/QSHPATHLOC) TYPE(*CHAR) +
                           LEN(10) VALUE('*BEGIN') TEXT('Path +
                           position for open source packages')
 
  /* Create and set data area for dft IFS save file loc - 1.31 */
-             CRTDTAARA  DTAARA(&DESTLIB/SAVFDIR) TYPE(*CHAR) LEN(255) +
+             CRTDTAARA  DTAARA(MOBIQSH/SAVFDIR) TYPE(*CHAR) LEN(255) +
                           VALUE('/tmp/savfqsh') TEXT('Path to save +
                           file IFS output')
 
@@ -628,7 +628,7 @@
              MONMSG     MSGID(CPF0000)
 
  /* Change library desc to match the version */
-             CHGLIB     LIB(&DESTLIB) TEXT('QShell on IBM i -' |> +
+             CHGLIB     LIB(QSHONI) TEXT('QShell on IBM i -' |> +
                           &VERSION)
 
  /* Make /tmp/qsh dir */

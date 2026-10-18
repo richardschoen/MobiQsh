@@ -4,7 +4,7 @@
              DCL        VAR(&DESTFILE) TYPE(*CHAR) LEN(10) +
                           VALUE(SOURCE)
              DCL        VAR(&DESTLIB) TYPE(*CHAR) LEN(10) +
-                          VALUE(QSHONI)
+                          VALUE(MOBIQSH)
              DCL        VAR(&TGTRLS) TYPE(*CHAR) LEN(10) +
                           VALUE(*CURRENT)
 
