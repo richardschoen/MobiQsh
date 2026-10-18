@@ -603,7 +603,7 @@
              CHGVAR     VAR(&QSHPYTHON) VALUE('/qshpython')
              CRTDTAARA  DTAARA(MOBIQSH/QSHPYTHON) TYPE(*CHAR) +
                           LEN(255) VALUE(&QSHPYTHON) TEXT('Path to +
-                          QSHONI Python Scripts')
+                          MOBIQSH Python Scripts')
 
 /* Attempt to create python script directory - V1.0.25 */
              MKDIR      DIR(&QSHPYTHON) DTAAUT(*RWX) OBJAUT(*ALL)
