@@ -5,7 +5,7 @@ The main benefit of the ```MobiQsh``` wrapper is to be able to integrate Qshell/
 
 ```MobiQsh``` is also used as a supporting component by the ```MobiGoGo Connect``` software integration product for IBM i.  
 
-If you need to integrate your IBM i to the outside world, learn more about ``` MobiGoGo Connect``` here.   
+If you need to integrate your IBM i to the outside world, learn more about ```MobiGoGo Connect``` here.   
 https://www.mobigogo.net
 
 There are several ways to build the library. Pick your favorite.
