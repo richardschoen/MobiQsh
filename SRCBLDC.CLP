@@ -628,8 +628,8 @@
              MONMSG     MSGID(CPF0000)
 
  /* Change library desc to match the version */
-             CHGLIB     LIB(MOBIQSH) TEXT('QShell on IBM i -' |> +
-                          &VERSION)
+             CHGLIB     LIB(MOBIQSH) TEXT('MobiGoGo Connect QShell +
+                         on IBM i -' |> &VERSION)                  
 
  /* Make /tmp/qsh dir */
              MKDIR      DIR('/tmp/qsh') DTAAUT(*RWX) OBJAUT(*ALL)
