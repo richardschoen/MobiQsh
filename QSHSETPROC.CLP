@@ -77,7 +77,7 @@
 /* Copy QShell .profile and set auth */
 /* Copy with line feeds and code page 819 */
              CPYTOSTMF  +
-                          FROMMBR('/QSYS.LIB/QSHONI.LIB/SOURCE.FILE/Q+
+                          FROMMBR('/QSYS.LIB/MOBIQSH.LIB/SOURCE.FILE/Q+
                           SHPROFILE.MBR') TOSTMF(&PROFILE) +
                           STMFOPT(*REPLACE) CVTDTA(*AUTO) +
                           ENDLINFMT(*LF) AUT(*INDIR) STMFCODPAG(819)
@@ -116,7 +116,7 @@
 /* Copy .bash_profile and set auth */
 /* Copy with line feeds and code page 819 */
              CPYTOSTMF  +
-                          FROMMBR('/QSYS.LIB/QSHONI.LIB/SOURCE.FILE/Q+
+                          FROMMBR('/QSYS.LIB/MOBIQSH.LIB/SOURCE.FILE/Q+
                           SHBASHPRF.MBR') TOSTMF(&BASHPROF) +
                           STMFOPT(*REPLACE) CVTDTA(*AUTO) +
                           ENDLINFMT(*LF) AUT(*INDIR) STMFCODPAG(819)
@@ -155,7 +155,7 @@
 /* Copy .bashrc and set auth */
 /* Copy with line feeds and code page 819 */
              CPYTOSTMF  +
-                          FROMMBR('/QSYS.LIB/QSHONI.LIB/SOURCE.FILE/Q+
+                          FROMMBR('/QSYS.LIB/MOBIQSH.LIB/SOURCE.FILE/Q+
                           SHBASHRC.MBR') TOSTMF(&BASHRC) +
                           STMFOPT(*REPLACE) CVTDTA(*AUTO) +
                           ENDLINFMT(*LF) AUT(*INDIR) STMFCODPAG(819)

@@ -8,7 +8,7 @@ The QSHQRYTMP command can be called from CL, RPG, COBOL and even QShell/PASE com
 # How it Works
 I think you'll appreciate the simplicity of this CL command utility for taking any SQL based query and creating an output file from the results. 
 
-The CL command is called QSHQRYTMP and it's part of the QShell on i utilities  - QSHONI (https://github.com/richardschoen/QshOni) I created for interacting with QShell and PASE apps from RPG, COBOL and CL. As a helper command the command does not require QShell or PASE, but it seemed like QSHONI was a good place for the command to live.
+The CL command is called QSHQRYTMP and it's part of the QShell on i utilities  - QSHONI (https://github.com/richardschoen/QSHONI I created for interacting with QShell and PASE apps from RPG, COBOL and CL. As a helper command the command does not require QShell or PASE, but it seemed like QSHONI was a good place for the command to live.
 
 Here's a sample of how easy it is to create a new file from an SQL query with QSHQRYTMP:
 

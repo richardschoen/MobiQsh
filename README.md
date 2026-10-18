@@ -105,24 +105,24 @@ https://github.com/richardschoen/MOBIQSH/blob/master/samples/python-oneline-samp
 ## Check out sample CL wrapper use-case commands that use QSHEXEC   
 https://github.com/richardschoen/MOBIQSH/tree/master/samples   
    
-## Installing and Building MOBIQSH via getrepo-qshoni.sh script 
+## Installing and Building MOBIQSH via getrepo-mobiqsh.sh script 
 
 ***(Important to change SRCCCSID variable in build.sh to your local CCSID before running build.sh. Default=37)***
 
 Use the following install script if you want to run a single shell script to clone the repo and build the library.  
 https://raw.githubusercontent.com/richardschoen/MobiQsh/refs/heads/main/getrepo-mobiqsh.sh.  
 
-## Download and run the getrepo-qshoni.sh script in one step, using wget
-❗This is the easiest way to install and build QSHONI using the most recent version source. Run the following wget command to download, build and install QSHONI quickly in a single step.   
-Make sure a temporary dir named /tmp/QshOni doesn't already exist before running the script or the git clone may fail to get current files from the repository.  
+## Download and run the getrepo-mobiqsh.sh script in one step, using wget
+❗This is the easiest way to install and build MOBIQSH using the most recent version source. Run the following wget command to download, build and install MOBIQSH quickly in a single step.   
+Make sure a temporary dir named /tmp/MobiQsh doesn't already exist before running the script or the git clone may fail to get current files from the repository.  
 ```
 rm -r /tmp/MobiQsh
 wget https://raw.githubusercontent.com/richardschoen/MobiQsh/refs/heads/main/getrepo-mobiqsh.sh -O - | bash
 ```
 
 ## Manually download getrepo-mobiqsh.sh and run it
-- Download the raw getrepo-qshoni.sh script or create it manually in your IFS. https://raw.githubusercontent.com/richardschoen/MobiQsh/refs/heads/main/getrepo-mobiqsh.sh    
-- Then run the getrepo-qshoni.sh script to automatically clone the repo and auto-run the build.sh to create the QSHONI library and associated objects.   
+- Download the raw getrepo-mobiqsh.sh script or create it manually in your IFS. https://raw.githubusercontent.com/richardschoen/MobiQsh/refs/heads/main/getrepo-mobiqsh.sh    
+- Then run the getrepo-mobiqshs.sh script to automatically clone the repo and auto-run the build.sh to create the MOBIQSH library and associated objects.   
 ```
 bash getrepo-mobiqsh.sh
 ```
@@ -146,35 +146,35 @@ Use this install method if you want to install from a save file object.
 
 ❗The SAVF download install method is not recommended. Building from source by cloning the repository is the preferred build method so you always get current source and library objects created on your specific system.   
 
-Download the **qshoni.savf** save file from the selected releases page. 
+Download the **mobiqsh.savf** save file from the selected releases page. 
 
 https://github.com/richardschoen/MOBIQSH/releases  **(Latest pre-built save file version - V1.0.37. Build from source for more current)**
 
-Upload the **qshoni.savf** to the IFS and place it in **/tmp/qshoni.savf**
+Upload the **mobiqsh.savf** to the IFS and place it in **/tmp/mobiqsh.savf**
 
 Run the following commands to copy the save file from the IFS into a SAVF object
 
-`CRTSAVF FILE(QGPL/QSHONI)`
+`CRTSAVF FILE(QGPL/MOBIQSH`
  
-`CPYFRMSTMF FROMSTMF('/tmp/qshoni.savf') TOMBR('/qsys.lib/qgpl.lib/qshoni.file') MBROPT(*REPLACE) CVTDTA(*NONE)`
+`CPYFRMSTMF FROMSTMF('/tmp/mobiqsh.savf') TOMBR('/qsys.lib/qgpl.lib/mobiqsh.file') MBROPT(*REPLACE) CVTDTA(*NONE)`
 
-Restore the QSHONI library
+Restore the MOBIQSH library
 
-`RSTLIB SAVLIB(QSHONI) DEV(*SAVF) SAVF(QGPL/QSHONI)`
+`RSTLIB SAVLIB(MOBIQSH DEV(*SAVF) SAVF(QGPL/MOBIQSH)`
 
-Build the QSHONI commands
+Build the MOBIQSH commands
 
  ***(Important co CHGJOB CCSID(37) before building from SAVF)***
 
 `CHGJOB CCSID(37)`
 
-`ADDLIBLE QSHONI`
+`ADDLIBLE MOBIQSH`
 
 `CRTCLPGM PGM(MOBIQSH/SRCBLDC) SRCFILE(MOBIQSH/SOURCE) SRCMBR(SRCBLDC) REPLACE(*YES)`
 
 `CALL PGM(MOBIQSH/SRCBLDC)`
 
-## Installing QSHONI library via wget and creating command objects
+## Installing MOBIQSH library via wget and creating command objects
 
 Use this install method if you want to install from a save file object via wget
 
@@ -182,27 +182,27 @@ Use this install method if you want to install from a save file object via wget
 
 Run the following commands to copy the save file from github into a SAVF object
 
-`CRTSAVF FILE(QGPL/QSHONI)`
+`CRTSAVF FILE(QGPL/MOBIQSH)`
 
 From QSHELL/QPTERM or BASH run:
 
 ❗This latest built save file version is ```V1.0.37```. To get latest, build library from the GitHub repo directly.
 
 ```
-/QOpenSys/pkgs/bin/wget https://github.com/richardschoen/MOBIQSH/releases/download/v1.0.37/qshoni137.savf --no-check-certificate -O  /qsys.lib/qgpl.lib/qshoni.file
+/QOpenSys/pkgs/bin/wget https://github.com/richardschoen/MOBIQSH/releases/download/v1.0.37/mobiqsh137.savf --no-check-certificate -O  /qsys.lib/qgpl.lib/mobiqsh.file
 ```
 
-Restore the QSHONI library
+Restore the MOBIQSH library
 
-`RSTLIB SAVLIB(QSHONI) DEV(*SAVF) SAVF(QGPL/QSHONI)`
+`RSTLIB SAVLIB(MOBIQSH DEV(*SAVF) SAVF(QGPL/MOBIQSH`
 
-Build the QSHONI commands
+Build the MOBIQSH commands
 
 ***(Important co CHGJOB CCSID(37) before building from SAVF)***
 
 `CHGJOB CCSID(37)`
 
-`ADDLIBLE QSHONI`
+`ADDLIBLE MOBIQSH`
 
 `CRTCLPGM PGM(MOBIQSH/SRCBLDC) SRCFILE(MOBIQSH/SOURCE) SRCMBR(SRCBLDC) REPLACE(*YES)`
 
@@ -877,7 +877,7 @@ The following example checks to see if a web service instance is running on port
 **Note: The QSHPYCALL command must be embedded into a CL program because it contains CL return variables.   
 
 The following example calls a script named ```pycallparm1.py``` that returns parameters from within an existing program.   
-```See CL sample QSHPYCALLT in the QSHONI library```
+```See CL sample QSHPYCALLT in the MOBIQSH library```
 
  ```
        DCL        VAR(&RETURN01) TYPE(*CHAR) LEN(255)     
@@ -1000,7 +1000,7 @@ The special prefix format we look for in the STDOUT log to return values from ST
 **Note: The QSHCALL command must be embedded into a CL program because it contains CL return variables.  
 
 The following example calls a script named ```pycallparm1.py``` that returns parameters from within an existing program.   
-```See CL sample QSHCALLT in the QSHONI library```
+```See CL sample QSHCALLT in the MOBIQSH library```
 
 ```
       DCL        VAR(&RETURN01) TYPE(*CHAR) LEN(255)     

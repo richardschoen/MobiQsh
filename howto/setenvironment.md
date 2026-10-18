@@ -7,7 +7,7 @@ Add the environment variable from the IBM i CL or RPG job using the ADDENVVAR CL
 
 This example adds an env variable named CALLEDBY and then lists it for display by calling env from the PASE job.
 ```
-ADDENVVAR ENVVAR(CALLEDBY) VALUE(QSHONI)
+ADDENVVAR ENVVAR(CALLEDBY) VALUE(QSHONI
 
 MOBIQSH/QSHBASH CMDLINE(env) DSPSTDOUT(*YES)
 ```

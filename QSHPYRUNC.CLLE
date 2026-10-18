@@ -299,11 +299,11 @@
                           VAR(&PYEXE) VALUE(&PYPATH |< &PYPATHSEP |< 'python3'))
 
 /*----------------------------------------------------------------------------*/
-/* Make sure QSHONITMP library and IFS directory created */
+/* Make sure MOBIQSHTMP library and IFS directory created */
 /*----------------------------------------------------------------------------*/
-             CHKOBJ     OBJ(QSHONITMP) OBJTYPE(*LIB)
+             CHKOBJ     OBJ(MOBIQSHTMP) OBJTYPE(*LIB)
              MONMSG     MSGID(CPF9801) EXEC(DO)
-             CRTLIB     LIB(QSHONITMP) TEXT('Qshoni Temp File +
+             CRTLIB     LIB(MOBIQSHTMP) TEXT('Qshoni Temp File +
                           Library') AUT(*ALL)
              ENDDO
 

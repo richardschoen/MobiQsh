@@ -628,7 +628,7 @@
              MONMSG     MSGID(CPF0000)
 
  /* Change library desc to match the version */
-             CHGLIB     LIB(QSHONI) TEXT('QShell on IBM i -' |> +
+             CHGLIB     LIB(MOBIQSH) TEXT('QShell on IBM i -' |> +
                           &VERSION)
 
  /* Make /tmp/qsh dir */
