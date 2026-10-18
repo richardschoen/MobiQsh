@@ -30,6 +30,7 @@ Email: richard@mobigogo.net
 ❗ If you get an error running ```build.sh``` you may need to run ```dos2unix build.sh``` to convert CR/LF to LF in the build.sh file. You must first have ```dos2unix``` installed via the IBM i open source package management.  Please open an issue to let me know if you run into this problem.
 
 ## News
+```10/18/2026``` - Initial fork from QSHONI project.
 ```9/22/2026``` - Updated QSHSAV* commands to have *ZLIB for data compression.
 ```8/6/2026``` - Added the QSHSSH command to run remote commands over SSH using SSH private key or user/password.   
 ```8/4/2026``` - Added the QSHLFTP command to upload and download files using the SFTP functionality in the lftp transfer utility.    
