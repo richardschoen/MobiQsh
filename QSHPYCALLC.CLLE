@@ -319,7 +319,7 @@
 /*----------------------------------------------------------------------------*/
              CHKOBJ     OBJ(MOBIQSHTMP) OBJTYPE(*LIB)
              MONMSG     MSGID(CPF9801) EXEC(DO)
-             CRTLIB     LIB(MOBIQSHTMP) TEXT('Qshoni Temp File +
+             CRTLIB     LIB(MOBIQSHTMP) TEXT('MOBIQSH Temp File +
                           Library') AUT(*ALL)
              ENDDO
 
