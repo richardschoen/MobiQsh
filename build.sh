@@ -539,7 +539,7 @@ SRCTEXT="Version Notes"
 cpy_member
 
 # Create and run build program
-system -q "CRTCLPGM PGM(${SRCLIB}/SRCBLDC) SRCFILE(${SRCLIB}/${SRCFILE})"
+system -q "CRTCLPGM PGM(${SRCLIB}/SRCBLDC) SRCFILE(${SRCLIB}/${SRCFILE}) TGTRLS(V7R3)"
 system -v "CALL PGM(${SRCLIB}/SRCBLDC)"
 
 echo "${SRCLIBTEXT} library ${SRCLIB} was created and programs compiled."
