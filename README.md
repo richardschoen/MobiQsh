@@ -1,4 +1,4 @@
-# QshOni
+# MobiQsh
 This FREE IBM i library contains useful CL wrapper commands to allow Qshell and Pase apps to be called and consumed from regular IBM i jobs via CL, RPG or COBOL programs. It also has a CL command to scan stdout for a specific value if you need to do something simple to check for a successful command run.
 
 The main benefit of this wrapper is to be able to integrate Qshell/Pase applications on-the-fly with standard IBM i job streams.
@@ -6,19 +6,19 @@ The main benefit of this wrapper is to be able to integrate Qshell/Pase applicat
 There are several ways to build the library. Pick your favorite.
 
 ## Jump right to the build link
-[Download and run the getrepo-qshoni.sh script in one step, using wget](https://github.com/richardschoen/MOBIQSH/blob/master/README.md#download-and-run-the-getrepo-qshonish-script-in-one-step-using-wget)
+[Download and run the getrepo-mobiqsh.sh script in one step, using wget](https://github.com/richardschoen/MOBIQSH/blob/master/README.md#download-and-run-the-getrepo-mobiqsh-script-in-one-step-using-wget)
 
-## Creating new utilities based on QshOni
+## Creating new utilities based on MobiQsh
 The core QShell on i library is pretty built-out so it will be generally stabilized as it's become a staple for my customers and calling their QShell and PASE applications. If there are fixes or tweaks to the core they will be made here, but I don't want to bloat this repository with a bunch of misc utilities or unrelated application code other than the repo being the core for easily running QShell and PASE code. That was its original use-case and will remain so.
 
-❗Many of the new utilities I create or others contribute around the ```QSHONI``` library will now be created as part of the ```MOBIQSH``` repository or as part of the MobiGoGo Connect product.
+❗Many of the new utilities I create or others contribute around the ```MOBIQSH``` library will now be created as part of the ```MOBIQSH``` repository or as part of the MobiGoGo Connect product.
 
 ## MobiGoGo Connect - Modernizing and Connecting IBM i to the World
 For many new IBM i system and connectivity utilities I am creating for IBM I, Windows, Linux and Cloud connectivity I have released a commercially supported product called ```MobiGoGo Connect```. https://www.mobigogo.net     
 
-The core ```MobiGoGo Connect``` components will be built upon QSHONI functionality and will continue to be ```FREE```. These will be moved into a new library named: ```MOBIQSH``` so things no longer live in the Q* library structure. 
+The core ```MobiGoGo Connect``` components will be built upon MOBIQSH functionality and will continue to be ```FREE```. These will be moved into a new library named: ```MOBIQSH``` so things no longer live in the Q* library structure. 
 
-MobiConnect provides functionality for creating applications, integrations, REST services and connection points for Native IBM i, Windows, Linux and MacOS apps to other platforms and services. It contains a lot of functionality that is better suited for commercial support. And it uses some of the QSHONI functionality as well.  
+MobiConnect provides functionality for creating applications, integrations, REST services and connection points for Native IBM i, Windows, Linux and MacOS apps to other platforms and services. It contains a lot of functionality that is better suited for commercial support. And it uses some of the MOBIQSH functionality as well.  
 
 If you are creating IBM i applications and services that need to integrate with other platforms or AI services, reach out and and we can talk about your requirements. MobiConnect may just be the right ticket for interconnecting your IBM i RPG, COBOL and CL apps to the world of web apps, REST services and mobile with minimal effort.     
 
@@ -42,7 +42,7 @@ Email: richard@mobigogo.net
 ```5/22/2026``` - Fixed issue with QSHSCPC.CLLE. Upgrade to V1.0.49 if you are using QSHSCP to transfer files over SCP.   
 ```4/28/2026``` - Updated the QSHPYRUN command with new parameters.   
 ```4/24/2026``` - Added two cool new commands for creating your own custom app logging in CL or RPG processes. ```QSHRTLOG``` and ```QSHPRTLOG```.   
-```4/19/2026``` - New repo for QSHONI based utilities https://github.com/richardschoen/qshoniutil   
+```4/19/2026``` - New repo for MOBIQSH based utilities https://github.com/richardschoen/qshoniutil   
 ```5/17/2025``` - New command ```QSHGETPR2``` can be used to retreive STDOUT return values to the calling job. You can optionally write the RTNPARMxx values as *DIAG messages to the joblog or to data areas for use with other calling programs.     
 ```5/17/2025``` - Updated ```QSHPHPRUN```, ```QSHPYRUN``` and ```QSHPYCALL``` to make double quotes optional for command line parameter arguments. Still defaults to double quotes for backward compatability.  
 ```2/6/2025``` - New dynamic RUNSQLPRM and RUNSQLSRC SQL action commands added. Allows passing soft coded parameters to SQL statements or SQL statements in source members from CL programs.     
@@ -105,7 +105,7 @@ https://github.com/richardschoen/MOBIQSH/blob/master/samples/python-oneline-samp
 ## Check out sample CL wrapper use-case commands that use QSHEXEC   
 https://github.com/richardschoen/MOBIQSH/tree/master/samples   
    
-## Installing and Building QSHONI via getrepo-qshoni.sh script 
+## Installing and Building MOBIQSH via getrepo-qshoni.sh script 
 
 ***(Important to change SRCCCSID variable in build.sh to your local CCSID before running build.sh. Default=37)***
 
@@ -116,8 +116,8 @@ https://github.com/richardschoen/MOBIQSH/raw/refs/heads/master/getrepo-qshoni.sh
 ❗This is the easiest way to install and build QSHONI using the most recent version source. Run the following wget command to download, build and install QSHONI quickly in a single step.   
 Make sure a temporary dir named /tmp/QshOni doesn't already exist before running the script or the git clone may fail to get current files from the repository.  
 ```
-rm -r /tmp/QshOni
-wget https://github.com/richardschoen/MOBIQSH/raw/refs/heads/master/getrepo-qshoni.sh -O - | bash
+rm -r /tmp/MobiQsh
+wget https://github.com/richardschoen/MOBIQSH/raw/refs/heads/master/getrepo-mobiqsh.sh -O - | bash
 ```
 
 ## Manually download getrepo-mobiqsh.sh and run it
@@ -138,9 +138,9 @@ git -c http.sslVerify=false clone --recurse-submodules https://github.com/richar
 cd mobiqsh
 build.sh  
 ```
-After building the QSHONI library the commands should be ready to use.
+After building the MOBIQSH library the commands should be ready to use.
 
-## Installing QSHONI library via save file and creating QSHEXEC command objects
+## Installing MOBIQSH library via save file and creating QSHEXEC command objects
 
 Use this install method if you want to install from a save file object.
 
