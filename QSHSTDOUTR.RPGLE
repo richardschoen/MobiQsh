@@ -118,7 +118,7 @@
      D msgid           S              7A   Inz('QSS9898')
      D msgf            DS            21
      D  MsgFile                      10A   Inz('QSHMSG')
-     D  MsgLib                       10A   Inz('QSHONI')
+     D  MsgLib                       10A   Inz('MOBIQSH')                        
      D
      D msgData         S           1024A
      D nDataLen        S             10I 0 Inz(0)
