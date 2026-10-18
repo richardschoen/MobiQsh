@@ -8,9 +8,9 @@ The main benefit of the ```MobiQsh``` wrapper is to be able to integrate Qshell/
 If you need to integrate your IBM i to the outside world, learn more about ```MobiGoGo Connect``` here.   
 https://www.mobigogo.net
 
-There are several ways to build the library. Pick your favorite.
-
 ## Jump right to the build link
+There are several ways to build the library. Pick your favorite.   
+
 [Download and run the getrepo-mobiqsh.sh script in one step, using wget](https://github.com/richardschoen/MOBIQSH/blob/master/README.md#download-and-run-the-getrepo-mobiqsh-script-in-one-step-using-wget)
 
 ## Creating new utilities based on MobiQsh
