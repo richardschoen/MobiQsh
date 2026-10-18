@@ -258,13 +258,14 @@
 
              CRTRPGMOD  MODULE(&DESTLIB/QSHONISRV) +
                           SRCFILE(&DESTLIB/&DESTFILE) +
-                          DBGVIEW(*SOURCE) /* 1.0.28 */
+                          DBGVIEW(*SOURCE) TGTRLS(&TGTRLS) /* 1.0.28 */
 
              CRTSRVPGM  SRVPGM(&DESTLIB/QSHONISRV) +
                           MODULE(&DESTLIB/QSHONISRV) +
                           EXPORT(*SRCFILE) SRCFILE(&DESTLIB/SOURCE) +
                           SRCMBR(QSHONISRVD) BNDSRVPGM(*NONE) +
-                          BNDDIR(*NONE) ACTGRP(*CALLER) /* 1.0.29 */
+                          BNDDIR(*NONE) ACTGRP(*CALLER) +
+                          TGTRLS(&TGTRLS) /* 1.0.29 */
 
              CRTBNDDIR  BNDDIR(&DESTLIB/QSHONISRV) TEXT('Binding +
                           Directory for QSHONISRV Service Program') +
@@ -552,7 +553,7 @@
              /* V1.0.51 */
              CRTSQLRPGI OBJ(&DESTLIB/WRKIFSLISR) +
                           SRCFILE(&DESTLIB/&DESTFILE) SRCMBR(*OBJ) +
-                          COMMIT(*NONE) OBJTYPE(*PGM) +
+                          COMMIT(*NONE) OBJTYPE(*PGM) TGTRLS(&TGTRLS) +
                           CLOSQLCSR(*ENDMOD) REPLACE(*NO)
 
              /* V1.0.56 */
@@ -633,7 +634,8 @@
 
  /* Create MOBIQSH temp file library */
              CRTLIB     LIB(MOBIQSHTMP) TEXT('MOBIQSH Temp File +
-                         Library') AUT(*ALL)                   
+                         Library') AUT(*ALL)
+             MONMSG     MSGID(CPF0000)
 
  /* Make /tmp/qsh dir */
              MKDIR      DIR('/tmp/qsh') DTAAUT(*RWX) OBJAUT(*ALL)
