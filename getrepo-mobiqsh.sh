@@ -5,7 +5,7 @@
 # Purpose: Get MOBIQSH repo and build the MOBIQSH library.
 # **WARNING** - Make sure to back up existing MOBIQSH library instances 
 #               before running build.sh
-#               Existing MOBIQSH library will be cleared by build.sh
+#               Existing MOBIQSH library will be cleared by build.sh.
 #----------------------------------------------------------------
 INSTALLTEMP="/tmp"
 INSTALLMOBIQSH="/tmp/MobiQsh"
