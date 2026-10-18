@@ -110,18 +110,18 @@ https://github.com/richardschoen/MOBIQSH/tree/master/samples
 ***(Important to change SRCCCSID variable in build.sh to your local CCSID before running build.sh. Default=37)***
 
 Use the following install script if you want to run a single shell script to clone the repo and build the library.  
-https://github.com/richardschoen/MOBIQSH/blob/master/getrepo-mobiqsh.sh   
+https://raw.githubusercontent.com/richardschoen/MobiQsh/refs/heads/main/getrepo-mobiqsh.sh.  
 
 ## Download and run the getrepo-qshoni.sh script in one step, using wget
 ❗This is the easiest way to install and build QSHONI using the most recent version source. Run the following wget command to download, build and install QSHONI quickly in a single step.   
 Make sure a temporary dir named /tmp/QshOni doesn't already exist before running the script or the git clone may fail to get current files from the repository.  
 ```
 rm -r /tmp/MobiQsh
-wget https://github.com/richardschoen/MOBIQSH/blob/master/getrepo-mobiqsh.sh -O - | bash
+wget https://raw.githubusercontent.com/richardschoen/MobiQsh/refs/heads/main/getrepo-mobiqsh.sh -O - | bash
 ```
 
 ## Manually download getrepo-mobiqsh.sh and run it
-- Download the raw getrepo-qshoni.sh script or create it manually in your IFS. https://github.com/richardschoen/MOBIQSH/blob/master/getrepo-mobiqsh.sh    
+- Download the raw getrepo-qshoni.sh script or create it manually in your IFS. https://raw.githubusercontent.com/richardschoen/MobiQsh/refs/heads/main/getrepo-mobiqsh.sh    
 - Then run the getrepo-qshoni.sh script to automatically clone the repo and auto-run the build.sh to create the QSHONI library and associated objects.   
 ```
 bash getrepo-mobiqsh.sh
