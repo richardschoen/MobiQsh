@@ -7,7 +7,7 @@
              DCL        VAR(&TGTRLS) TYPE(*CHAR) LEN(10) +
                           VALUE(V7R3M0)
              DCL        VAR(&VERSION) TYPE(*CHAR) LEN(30) +
-                          VALUE(V1.0.58)
+                          VALUE(V1.0.59)
              DCL        VAR(&QSHPYTHON) TYPE(*CHAR) LEN(255)
              DCL        VAR(&CMD) TYPE(*CHAR) LEN(512)
              DCL        VAR(&LEN) TYPE(*DEC) LEN(15 5)
@@ -577,6 +577,48 @@
                           SRCFILE(&DESTLIB/&DESTFILE) +
                           SRCMBR(QSHSSHC) +
                           ALWRTVSRC(*NO) REPLACE(*NO) TGTRLS(&TGTRLS)
+
+             /* V1.0.XX */
+             CRTCMD     CMD(&DESTLIB/MBQRYSQL) +
+                          PGM(&DESTLIB/MBQRYSQLC) +
+                          SRCFILE(&DESTLIB/&DESTFILE) PRDLIB(&DESTLIB)
+
+             /* V1.0.59 */
+             CRTBNDCL   PGM(&DESTLIB/MBQRYSQLC) +
+                          SRCFILE(&DESTLIB/&DESTFILE) +
+                          ALWRTVSRC(*NO) REPLACE(*NO) TGTRLS(&TGTRLS)
+
+             CRTBNDRPG  PGM(&DESTLIB/MBQRYSQLPR) +
+                          SRCFILE(&DESTLIB/&DESTFILE) +
+                          DFTACTGRP(*NO) REPLACE(*NO) TGTRLS(&TGTRLS)
+
+             CRTBNDRPG  PGM(&DESTLIB/MBQRYSQL2R) +
+                          SRCFILE(&DESTLIB/&DESTFILE) +
+                          DFTACTGRP(*NO) REPLACE(*NO) TGTRLS(&TGTRLS)
+
+             CRTBNDRPG  PGM(&DESTLIB/MBQRYSQL3R) +
+                          SRCFILE(&DESTLIB/&DESTFILE) +
+                          DFTACTGRP(*NO) REPLACE(*NO) TGTRLS(&TGTRLS)
+
+             CRTBNDRPG  PGM(&DESTLIB/MBQRYSQL4R) +
+                          SRCFILE(&DESTLIB/&DESTFILE) +
+                          DFTACTGRP(*NO) REPLACE(*NO) TGTRLS(&TGTRLS)
+
+             /* V1.0.59 */
+             CRTCMD     CMD(&DESTLIB/MBVIEWTBL) +
+                          PGM(&DESTLIB/MBVIEWTBLC) +
+                          SRCFILE(&DESTLIB/&DESTFILE) PRDLIB(&DESTLIB)
+
+             /* V1.0.59 */
+             CRTBNDCL   PGM(&DESTLIB/MBVIEWTBLC) +
+                          SRCFILE(&DESTLIB/&DESTFILE) +
+                          ALWRTVSRC(*NO) REPLACE(*NO) TGTRLS(&TGTRLS)
+
+             /* V1.0.59 */
+             CRTQMQRY   QMQRY(&DESTLIB/MBVIEWTBLQ) +
+                          SRCFILE(&DESTLIB/&DESTFILE) +
+                          SRCMBR(*QMQRY) SRTSEQ(*SRC) LANGID(*SRC) +
+                          REPLACE(*YES)
 
 /* Create message file for any custom CPF messages */
  /* Initial use case is to log STDOUT msgs with own CPF ID    */
