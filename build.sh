@@ -531,6 +531,42 @@ CURFILE="QSHSSHC.CLLE"
 SRCTEXT="Run Remote Command over SSH"   
 cpy_member
 
+CURFILE="MBQRYSQL.CMD"
+SRCTEXT="SQL Query Data via SQL Src Mbr and Export to CSV"   
+cpy_member
+
+CURFILE="MBQRYSQLC.CLLE"
+SRCTEXT="SQL Query Data via SQL Src Mbr and Export to CSV"   
+cpy_member
+
+CURFILE="MBQRYSQLPR.RPGLE"
+SRCTEXT="SQL Query Data via SQL Source Member to Temp Table"   
+cpy_member
+
+CURFILE="MBQRYSQL2R.RPGLE"
+SRCTEXT="SQL Query Data Scan/Replace Parm Values"   
+cpy_member
+
+CURFILE="MBQRYSQL3R.RPGLE"
+SRCTEXT="SQL Query Data Scan and Remove SQL Comments"   
+cpy_member
+
+CURFILE="MBQRYSQL4R.RPGLE"
+SRCTEXT="SQL Query Data Scan and Set Timestamps in IFS Path"   
+cpy_member
+
+CURFILE="MBVIEWTBL.CMD"
+SRCTEXT="View Selected File ot SQL Select Results"   
+cpy_member
+
+CURFILE="MBVIEWTBLC.CLLE"
+SRCTEXT="View Selected File ot SQL Select Results"   
+cpy_member
+
+CURFILE="MBVIEWTBLQ.QMQRY"
+SRCTEXT="Run SQL Statement and View Results with STRQMQRY"   
+cpy_member
+
 CURFILE="README.TXT"
 SRCTEXT="Read Me Docs on Setup"
 cpy_member
