@@ -105,7 +105,7 @@ IBM i QShell
 https://www.ibm.com/docs/en/i/7.5?topic=languages-qshell
 
 
-## Check latest version info (Current Version 1.0.58 - 8/6/2026)  
+## Check latest version info (Current Version 1.0.59 - 10/25/2026)  
 https://github.com/richardschoen/MOBIQSH/blob/master/version.md    
 
 ## Check out one-liner Python samples
