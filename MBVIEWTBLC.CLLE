@@ -1,0 +1,210 @@
+             PGM        PARM(&FULLTABLE &SQL &OPTION &SPLFNAME +
+                          &USRDTA &PRTTXT &HOLD &FULLOUTQ +
+                          &PAGEWIDTH &FULLOUTFIL &MBROPT &IFSFILE +
+                          &REPLACE)
+
+             DCL        VAR(&MBROPT) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&REPLACE) TYPE(*CHAR) LEN(4)
+             DCL        VAR(&IFSFILE) TYPE(*CHAR) LEN(255)
+             DCL        VAR(&PAGEWIDTH) TYPE(*CHAR) LEN(5)
+             DCL        VAR(&OPTION) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&SPLFNAME) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&USRDTA) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&PRTTXT) TYPE(*CHAR) LEN(30)
+             DCL        VAR(&HOLD) TYPE(*CHAR) LEN(4)
+             DCL        VAR(&FULLOUTQ) TYPE(*CHAR) LEN(20)
+             DCL        VAR(&FULLOUTFIL) TYPE(*CHAR) LEN(20)
+             DCL        VAR(&SQL) TYPE(*CHAR) LEN(550)
+             DCL        VAR(&STM1) TYPE(*CHAR) LEN(50)
+             DCL        VAR(&STM2) TYPE(*CHAR) LEN(50)
+             DCL        VAR(&STM3) TYPE(*CHAR) LEN(50)
+             DCL        VAR(&STM4) TYPE(*CHAR) LEN(50)
+             DCL        VAR(&STM5) TYPE(*CHAR) LEN(50)
+             DCL        VAR(&STM6) TYPE(*CHAR) LEN(50)
+             DCL        VAR(&STM7) TYPE(*CHAR) LEN(50)
+             DCL        VAR(&STM8) TYPE(*CHAR) LEN(50)
+             DCL        VAR(&STM9) TYPE(*CHAR) LEN(50)
+             DCL        VAR(&STM10) TYPE(*CHAR) LEN(50)
+             DCL        VAR(&FULLTABLE) TYPE(*CHAR) LEN(20)
+             DCL        VAR(&FILE) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&LIBRARY) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&OUTQ) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&OUTQLIB) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&OFILE) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&OLIB) TYPE(*CHAR) LEN(10)
+
+             MONMSG     MSGID(CPF0000) EXEC(GOTO CMDLBL(ERRORS))
+
+             /* Parse file name, outq, outfile */
+             CHGVAR     VAR(&FILE) VALUE(%SST(&FULLTABLE 1 10))
+             CHGVAR     VAR(&LIBRARY) VALUE(%SST(&FULLTABLE 11 10))
+
+             CHGVAR     VAR(&OUTQ) VALUE(%SST(&FULLOUTQ 1 10))
+             CHGVAR     VAR(&OUTQLIB) VALUE(%SST(&FULLOUTQ 11 10))
+
+             CHGVAR     VAR(&OFILE) VALUE(%SST(&FULLOUTFIL 1 10))
+             CHGVAR     VAR(&OLIB) VALUE(%SST(&FULLOUTFIL 11 10))
+
+             /* View table or run SQL select */
+             IF         COND(&FILE *NE *SQL) THEN(DO)
+             CHGVAR     VAR(&STM1) VALUE('SELECT * FROM' |> +
+                          &LIBRARY |< '/' |< &FILE)
+             ENDDO
+             IF         COND(&FILE *EQ *SQL) THEN(DO)
+             CHGVAR     VAR(&STM1) VALUE(%SST(&SQL 1 50))
+             CHGVAR     VAR(&STM2) VALUE(%SST(&SQL 51 50))
+             CHGVAR     VAR(&STM3) VALUE(%SST(&SQL 101 50))
+             CHGVAR     VAR(&STM4) VALUE(%SST(&SQL 151 50))
+             CHGVAR     VAR(&STM5) VALUE(%SST(&SQL 201 50))
+             CHGVAR     VAR(&STM6) VALUE(%SST(&SQL 251 50))
+             CHGVAR     VAR(&STM7) VALUE(%SST(&SQL 301 50))
+             CHGVAR     VAR(&STM8) VALUE(%SST(&SQL 351 50))
+             CHGVAR     VAR(&STM9) VALUE(%SST(&SQL 401 50))
+             CHGVAR     VAR(&STM10) VALUE(%SST(&SQL 451 50))
+             ENDDO
+
+             /*-------------------------------------------------*/
+             /* If displaying on screen, run query and display       */
+             /*-------------------------------------------------*/
+             IF         COND(&OPTION *EQ '*') THEN(DO)
+
+             /* Run the query and display results */
+             STRQMQRY   QMQRY(MOBIQSH/MBVIEWTBLQ) OUTPUT(&OPTION) +
+                          OUTMBR(*FIRST *REPLACE) SETVAR((STM1 +
+                          &STM1) (STM2 &STM2) (STM3 &STM3) (STM4 +
+                          &STM4) (STM5 &STM5) (STM6 &STM6) (STM7 +
+                          &STM7) (STM8 &STM8) (STM9 &STM9) (STM10 +
+                          &STM10))
+
+             SNDPGMMSG  MSGID(CPF9898) MSGF(QCPFMSG) +
+                          MSGDTA('Query complete and results +
+                          were displayed') MSGTYPE(*COMP)
+
+             ENDDO
+
+             /*-------------------------------------------------*/
+             /* If sending to outfile, delete existing outfile first */
+             /*-------------------------------------------------*/
+             IF         COND(&OPTION *EQ *OUTFILE) THEN(DO)
+
+             /* Delete outfile if already exists and *REPLACE opt */
+             IF         COND(&MBROPT *EQ *REPLACE) THEN(DO)
+             DLTF       FILE(&OLIB/&OFILE)
+             MONMSG     MSGID(CPF0000)
+             ENDDO
+
+             /* Run the query and send to outfile results */
+             STRQMQRY   QMQRY(MOBIQSH/MBVIEWTBLQ) OUTPUT(&OPTION) +
+                          OUTFILE(&OLIB/&OFILE) OUTMBR(*FIRST +
+                          &MBROPT) SETVAR((STM1 &STM1) (STM2 &STM2) +
+                          (STM3 &STM3) (STM4 &STM4) (STM5 &STM5) +
+                          (STM6 &STM6) (STM7 &STM7) (STM8 &STM8) +
+                          (STM9 &STM9) (STM10 &STM10))
+
+             SNDPGMMSG  MSGID(CPF9898) MSGF(QCPFMSG) MSGDTA('Query +
+                          complete to' |> &OLIB |< '/' |< &OFILE) +
+                          MSGTYPE(*COMP)
+
+             ENDDO
+
+             /*-------------------------------------------------*/
+             /* If printing apply print options */
+             /*-------------------------------------------------*/
+             IF         COND(&OPTION *EQ *PRINT) THEN(DO)
+
+             /* Override without specific outq */
+             IF         COND(&OUTQ *EQ *SAME) THEN(DO)
+             OVRPRTF    FILE(QPQXPRTF) TOFILE(QPQXPRTF) PAGESIZE(*N +
+                          &PAGEWIDTH) PRTTXT(&PRTTXT) +
+                          MAXRCDS(*NOMAX) HOLD(&HOLD) +
+                          USRDTA(&USRDTA) SPLFNAME(&SPLFNAME) +
+                          OVRSCOPE(*JOB)
+             ENDDO /* ENDDO OUTQ = *SAME */
+             IF         COND(&OUTQ *NE *SAME) THEN(DO)
+             /* Override with specific outq */
+             OVRPRTF    FILE(QPQXPRTF) TOFILE(QPQXPRTF) PAGESIZE(*N +
+                          &PAGEWIDTH) PRTTXT(&PRTTXT) +
+                          OUTQ(&OUTQLIB/&OUTQ) MAXRCDS(*NOMAX) +
+                          HOLD(&HOLD) USRDTA(&USRDTA) +
+                          SPLFNAME(&SPLFNAME) OVRSCOPE(*JOB)
+             ENDDO /* ENDDO OUTQ <> *SAME */
+
+             /* If IFSFILE = *NONE, we will print it */
+             IF         COND(&IFSFILE *EQ *NONE) THEN(DO)
+
+             /* Run the query and display results */
+             STRQMQRY   QMQRY(MOBIQSH/MBVIEWTBLQ) OUTPUT(&OPTION) +
+                          OUTMBR(*FIRST +
+                          *REPLACE) SETVAR((STM1 &STM1) (STM2 +
+                          &STM2) (STM3 &STM3) (STM4 &STM4) (STM5 +
+                          &STM5) (STM6 &STM6) (STM7 &STM7) (STM8 +
+                          &STM8) (STM9 &STM9) (STM10 &STM10))
+
+             DLTOVR     FILE(QPQXPRTF) LVL(*JOB)
+
+             ENDDO /* IFS IFSFILE = *NONE */
+
+             /* If IFSFILE <> *NONE we will create a PDF doc */
+             IF         COND(&IFSFILE *NE *NONE) THEN(DO)
+
+             /* Check for existing PDF file */
+             QSHIFSCHK FILNAM(&IFSFILE)
+             /* Not found. Good */
+             MONMSG     MSGID(CPF9898) EXEC(DO)
+             ENDDO
+             /* Found. If replace = *YES, delete and continue */
+             MONMSG     MSGID(CPF9897) EXEC(DO)
+             IF         COND(&REPLACE *EQ *NO) THEN(DO)
+             SNDPGMMSG  MSGID(CPF9898) MSGF(QCPFMSG) MSGDTA('PDF +
+                          file' |> &IFSFILE |> 'exists and replace +
+                          was set to *NO. Print cancelled') +
+                          MSGTYPE(*ESCAPE)
+             ENDDO
+             /* Erase PDF */
+             ERASE      OBJLNK(&IFSFILE)
+             ENDDO
+
+             /* Override without specific outq */
+             OVRPRTF    FILE(QPQXPRTF) TOFILE(QPQXPRTF) +
+                          DEVTYPE(*AFPDS) PAGESIZE(8.5 18.5 *UOM) +
+                          LPI(12) CPI(20) FRONTMGN(0 0) OVRFLW(96) +
+                          PRTTXT(&PRTTXT) MAXRCDS(*NOMAX) +
+                          HOLD(&HOLD) USRDTA(&USRDTA) +
+                          SPLFNAME(&SPLFNAME) TOSTMF(&IFSFILE) +
+                          WSCST(*PDF) OVRSCOPE(*JOB)
+
+             /* Run the query and display results */
+             STRQMQRY   QMQRY(MOBIQSH/MBVIEWTBLQ) OUTPUT(&OPTION) +
+                          OUTMBR(*FIRST +
+                          *REPLACE) SETVAR((STM1 &STM1) (STM2 +
+                          &STM2) (STM3 &STM3) (STM4 &STM4) (STM5 +
+                          &STM5) (STM6 &STM6) (STM7 &STM7) (STM8 +
+                          &STM8) (STM9 &STM9) (STM10 &STM10))
+
+             DLTOVR     FILE(QPQXPRTF) LVL(*JOB)
+
+             ENDDO /* IFS IFSFILE = *NONE */
+
+
+             IF         COND(&IFSFILE *NE *NONE) THEN(DO)
+             SNDPGMMSG  MSGID(CPF9898) MSGF(QCPFMSG) MSGDTA('Print +
+                          complete to PDF file' |> &IFSFILE) +
+                          MSGTYPE(*COMP)
+             ENDDO
+             IF         COND(&IFSFILE *EQ *NONE) THEN(DO)
+             SNDPGMMSG  MSGID(CPF9898) MSGF(QCPFMSG) MSGDTA('Print +
+                          complete to outq' |> &OUTQLIB |< '/' |< +
+                          &OUTQ) MSGTYPE(*COMP)
+             ENDDO
+
+             ENDDO /* ENDDO If option = *PRINT */
+
+             RETURN
+
+ERRORS:
+             SNDPGMMSG  MSGID(CPF9898) MSGF(QCPFMSG) MSGDTA('Error +
+                          viewing file or running SQL select') +
+                          MSGTYPE(*ESCAPE)
+
+ENDPGM:
+             ENDPGM
