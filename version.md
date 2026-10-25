@@ -496,3 +496,16 @@ Minor syntax changes on QSHSAV* CL programs to fix message spacing.
 ## V1.0.58 - 10/18/2026
 Forked QSHONI repo to start this one.
 
+## V1.0.59 - 10/25/2026
+Added ```MBQRYSQL``` convenience command to run SQL queries via command entry our source file and write results to OUTFILE or CSV file via CPYTOIMPF.
+
+Added ```MBVIEWTBL``` convenience command to view a selected DB2 table by utilizing STRQMQRY in the background or utilizing an interactive SQL select statement. Results can be sent to the screen for display, to a print file as a report or to an outfile as desired. 
+
+
+
+
+
+
+
+
+
